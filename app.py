@@ -1,7 +1,6 @@
 from flask import Flask, request
 import settings
 import services
-
 app = Flask(__name__)
 
 @app.route('/bienvenido', methods=['GET'])
@@ -14,7 +13,7 @@ def token_verify():
         token = request.args.get('hub.verify_token')
         challenge = request.args.get('hub.challenge')
 
-        if token == settings.token and challeng != None:
+        if token == settings.token and challenge != None:
             return challenge
         else:
             return 'token incorrecto', 403
